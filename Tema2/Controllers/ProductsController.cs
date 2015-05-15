@@ -171,5 +171,32 @@ namespace Tema2.Controllers
             total += product.Price;
             return RedirectToAction("Index");
         }
+
+        public enum ExportTypes { Json, Csv};
+
+        public Exporter CreateExporter(String t)
+        {
+            Exporter e;
+            if (t == "Csv")
+            {
+                e = new CSVExporter();
+                return e;
+            }
+            if (t == "Json")
+            {
+                e = new JsonExporter();
+                return e;
+            }
+            return null;
+        }
+
+        public ActionResult Export(String t)
+        {
+            Exporter e;
+           
+            e = CreateExporter(t);
+            e.export(db);
+            return RedirectToAction("Index");
+        }
     }
 }
