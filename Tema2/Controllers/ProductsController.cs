@@ -174,27 +174,13 @@ namespace Tema2.Controllers
 
         public enum ExportTypes { Json, Csv};
 
-        public Exporter CreateExporter(String t)
-        {
-            Exporter e;
-            if (t == "Csv")
-            {
-                e = new CSVExporter();
-                return e;
-            }
-            if (t == "Json")
-            {
-                e = new JsonExporter();
-                return e;
-            }
-            return null;
-        }
+        
 
         public ActionResult Export(String t)
         {
             Exporter e;
-           
-            e = CreateExporter(t);
+            ExporterFactory ef = new ExporterFactory();
+            e = ef.CreateExporter(t);
             e.export(db);
             return RedirectToAction("Index");
         }

@@ -167,6 +167,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CSVExporter.cs" />
     <Compile Include="Models\Exporter.cs" />
+    <Compile Include="Models\ExporterFactory.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\JsonExporter.cs" />
     <Compile Include="Models\Product.cs" />
